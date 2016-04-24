@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libRbmGraphic.a  CMakeFiles/RbmGraphic.dir/RenderEngine.cpp.o CMakeFiles/RbmGraphic.dir/GraphicNode.cpp.o CMakeFiles/RbmGraphic.dir/CameraSceneNode.cpp.o
+/usr/bin/ranlib ../../lib/libRbmGraphic.a

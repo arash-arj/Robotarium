@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libRbmCore.a  CMakeFiles/RbmCore.dir/Manager.cpp.o CMakeFiles/RbmCore.dir/Scene.cpp.o CMakeFiles/RbmCore.dir/Node.cpp.o CMakeFiles/RbmCore.dir/SceneNode.cpp.o CMakeFiles/RbmCore.dir/SceneNodeBase.cpp.o CMakeFiles/RbmCore.dir/Visitor.cpp.o
+/usr/bin/ranlib ../../lib/libRbmCore.a

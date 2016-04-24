@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libRbmCommon.a  CMakeFiles/RbmCommon.dir/BaseObject.cpp.o CMakeFiles/RbmCommon.dir/Mesh.cpp.o CMakeFiles/RbmCommon.dir/SubMesh.cpp.o CMakeFiles/RbmCommon.dir/MeshLoader.cpp.o CMakeFiles/RbmCommon.dir/Logger.cpp.o CMakeFiles/RbmCommon.dir/CommonVisitors.cpp.o CMakeFiles/RbmCommon.dir/Timer.cpp.o
+/usr/bin/ranlib ../../lib/libRbmCommon.a

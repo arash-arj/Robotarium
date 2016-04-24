@@ -1,0 +1,104 @@
+﻿#pragma once
+#ifndef __RENDERENGINE_HPP__
+#define __RENDERENGINE_HPP__
+
+#include <vector>
+#include <string>
+//#include <Windows.h>
+
+#include <boost/make_shared.hpp>
+#include <boost/thread.hpp>
+
+#include "common/SingletonT.hpp"
+#include "common/Types.hpp"
+#include "common/Logger.hpp"
+#include "common/CommonVisitors.hpp"
+//#include "graphic/GraphicTypes.hpp"
+#include "graphic/OgreHeaders.hpp"
+#include "core/Scene.hpp"
+#include "graphic/WindowFactory.hpp"
+
+namespace Robotarium
+{
+	/// \ingroup Robotarium_graphics
+	/// \brief Graphics Rendering namespace
+	namespace graphic
+	{
+		/// \addtogroup Robotarium_graphics
+		/// \{
+
+		/// \class RenderEngine RenderEngine.hpp graphic/RenderEngine.hpp
+		/// \brief Wrapper Class for Ogre3d
+		///
+		/// Provides the interface to load, initialize the rendering engine.
+		class RenderEngine: public SingletonT<RenderEngine>
+		{
+
+				/// \brief Constructor
+		private:	RenderEngine(void);
+
+				/// \brief Destructor
+		private: virtual ~RenderEngine(void);
+
+				/// \brief Load the parameters for Ogre. Load must happen before Init.
+		public: void Load();//WindowFactoryPtr _windowfactory);
+
+				/// \brief Load the parameters for Ogre. Load must happen before Init.
+		public: void Load(WindowFactoryPtr _windowfactory);
+
+				/// \brief Initialize Ogre. Load must happen before Init.
+		public: void Init();
+
+				/// \brief Tears down the rendering engine
+		public: void Terminate();
+
+				/// \brief Setup initial resource paths.
+		public: void SetupResources();
+
+				/// \brief Setup the render system.
+		public: void SetupRenderSystem();
+
+				/// \brief Return the Ogre SceneManager
+		public: Ogre::SceneManager *GetOgreSceneManager();
+
+				/// \brief Start rendering
+		public: void RunRenderLoop();
+
+				/// \brief Returns the pointer to the root object
+		public:	Ogre::Root *GetOgreRoot();
+
+				/// \brief Pointer to the root object
+		private: Ogre::Root *mOgreRoot;
+
+				/// \brief Pointer to the Scene Manager
+		private: Ogre::SceneManager *mOgreSceneManager;
+
+				/// \brief Pointer to the Window Factory
+		private:	WindowFactoryPtr mWindowFactory;
+
+				/// \brief Initialized.
+		private: bool initialized;
+
+				/// \brief Loaded.
+		private: bool loaded;
+
+				 /// \brief Pointer the log manager
+		private: Ogre::LogManager *logManager;
+
+				 /// \brief Makes this class a singleton.
+		private: friend class SingletonT<RenderEngine>;
+
+				 /// \brief Thread used to run rendering loop
+		private: boost::thread mThread;
+
+				 /// \brief Render loop worker
+		private: void RenderLoopWorker();
+
+
+				 /// \brief Creates a window using Window Factory
+		public:	Robotarium::String CreateNewWindow(Robotarium::Vec2 _viewportsize,
+						Robotarium::String _name);
+		};
+	}
+}
+#endif
